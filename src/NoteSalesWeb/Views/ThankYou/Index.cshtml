@@ -35,23 +35,18 @@
         }
         else
         {
-            <div class="alert alert-warning mx-auto" style="max-width: 600px;">
-                <h5 class="mb-2">Payment Processing</h5>
-                <p class="mb-0">
-                    Your payment is being verified. You will receive an email with download instructions shortly.
-                    If you have a payment ID, you can check your purchase status.
+            <div class="alert alert-info mx-auto" style="max-width: 600px;">
+                <h5 class="mb-2">Access Your Purchase</h5>
+                <p class="mb-3">
+                    Your payment is being processed. To access your notes, please use the access page below.
                 </p>
-            </div>
-
-            @if (Model.PlanDetails != null)
-            {
-                <div class="mt-4">
-                    <a href="@Url.Action("Download", "ThankYou", new { plan = Model.PlanDetails.Plan.ToString().ToLower() })" 
-                       class="btn btn-outline-primary btn-lg rounded-pill px-5">
-                        Access @Model.PlanDetails.Name
+                <div class="mt-3">
+                    <a href="@Url.Action("Access", "ThankYou")" 
+                       class="btn btn-primary btn-lg rounded-pill px-5">
+                        Access My Purchase
                     </a>
                 </div>
-            }
+            </div>
         }
 
         <div class="mt-5">
@@ -61,4 +56,6 @@
         </div>
     </div>
 </section>
+
+@await Html.PartialAsync("_Footer")
 

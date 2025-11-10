@@ -31,6 +31,22 @@ public class PurchaseService
         }
     }
 
+    public Purchase? GetPurchaseByEmail(string email)
+    {
+        lock (_lock)
+        {
+            return _purchases.Values
+                .Where(p => p.Email.Equals(email, StringComparison.OrdinalIgnoreCase) && p.IsVerified)
+                .OrderByDescending(p => p.PurchaseDate)
+                .FirstOrDefault();
+        }
+    }
+
+    public void RecordPurchase(Purchase purchase)
+    {
+        SavePurchase(purchase);
+    }
+
     public List<PlanDetails> GetPlans()
     {
         return new List<PlanDetails>

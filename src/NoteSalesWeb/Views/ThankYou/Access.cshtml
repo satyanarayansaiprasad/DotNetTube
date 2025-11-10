@@ -1,0 +1,67 @@
+@{
+    ViewData["Title"] = "Access Your Purchase";
+}
+
+<section class="section">
+    <div class="container-xl">
+        <div class="section-card" style="max-width: 600px; margin: 0 auto;">
+            <h2 class="section-title mb-3 text-center">Access Your Purchase</h2>
+            <p class="section-subtitle text-center mb-4">
+                Enter your payment ID or email address to access your purchased notes. 
+                If you just completed a payment, please wait a few moments for it to be processed.
+            </p>
+
+            @if (TempData["Error"] != null)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @TempData["Error"]
+                </div>
+            }
+
+            <form method="post" action="@Url.Action("Access", "ThankYou")">
+                <div class="mb-4">
+                    <label for="paymentId" class="form-label fw-semibold">Payment ID (Optional)</label>
+                    <input type="text" 
+                           class="form-control form-control-lg" 
+                           id="paymentId" 
+                           name="paymentId" 
+                           placeholder="pay_xxxxxxxxxxxxx"
+                           value="">
+                    <small class="form-text text-muted">You can find this in your Razorpay payment confirmation email or receipt.</small>
+                </div>
+
+                <div class="mb-4">
+                    <label for="email" class="form-label fw-semibold">Email Address</label>
+                    <input type="email" 
+                           class="form-control form-control-lg" 
+                           id="email" 
+                           name="email" 
+                           placeholder="your.email@example.com"
+                           required>
+                    <small class="form-text text-muted">Enter the email address you used for payment.</small>
+                </div>
+
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-primary btn-lg rounded-pill">
+                        Access My Purchase
+                    </button>
+                </div>
+            </form>
+
+            <div class="mt-4 pt-4 border-top text-center">
+                <p class="text-muted small mb-2">Need help?</p>
+                <p class="text-muted small mb-0">
+                    If you're having trouble accessing your purchase, please check:
+                </p>
+                <ul class="list-unstyled text-muted small mt-2">
+                    <li>✓ Your payment confirmation email</li>
+                    <li>✓ That you used the correct email address</li>
+                    <li>✓ That your payment was successful</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+@await Html.PartialAsync("_Footer")
+

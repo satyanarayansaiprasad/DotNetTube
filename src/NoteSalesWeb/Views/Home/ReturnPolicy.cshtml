@@ -1,0 +1,59 @@
+@{
+    ViewData["Title"] = "Return and Refund Policy";
+}
+
+<section class="section" style="padding-top: 6rem;">
+    <div class="container-xl">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1 class="display-4 mb-4 text-white">Return and Refund Policy</h1>
+                <p class="text-muted mb-4">Last Updated: @DateTime.UtcNow.ToString("MMMM dd, yyyy")</p>
+
+                <div class="section-card">
+                    <h2>Digital Product Policy</h2>
+                    <p>DotNetTube offers digital educational products including .NET learning notes, practice questions, and study materials. Due to the immediate digital delivery and downloadable nature of our products, we have a strict no-refund policy.</p>
+
+                    <h2>Why No Refunds?</h2>
+                    <ul>
+                        <li><strong>Instant Access:</strong> Once payment is confirmed, you immediately receive access to all purchased materials</li>
+                        <li><strong>Digital Nature:</strong> Digital products cannot be "returned" as physical products can</li>
+                        <li><strong>Intellectual Property:</strong> Once downloaded, the content cannot be retrieved</li>
+                    </ul>
+
+                    <h2>Exceptions</h2>
+                    <p>We may consider refunds in the following exceptional circumstances:</p>
+                    <ul>
+                        <li>Technical issues preventing access to purchased materials (we will first attempt to resolve the issue)</li>
+                        <li>Duplicate purchases made in error (within 24 hours of purchase)</li>
+                        <li>Payment processing errors (contact us immediately)</li>
+                    </ul>
+
+                    <h2>How to Request a Refund (If Applicable)</h2>
+                    <ol>
+                        <li>Contact us within 7 days of purchase</li>
+                        <li>Provide your order/payment ID</li>
+                        <li>Explain the reason for refund request</li>
+                        <li>We will review and respond within 3-5 business days</li>
+                    </ol>
+
+                    <h2>Upgrade Policy</h2>
+                    <p>If you purchased a lower-tier plan and wish to upgrade to a higher tier, you can pay the difference between plans. Your progress and access will be upgraded accordingly.</p>
+
+                    <h2>Lifetime Updates</h2>
+                    <p>All purchases include lifetime updates to the materials. As .NET evolves, you will receive updated content at no additional cost.</p>
+
+                    <h2>Contact Us</h2>
+                    <p>For refund inquiries or technical support, please contact us through our website contact form or email support.</p>
+
+                    <div class="alert alert-info mt-4">
+                        <strong>Note:</strong> Before purchasing, please review the product descriptions, pricing, and features carefully. We recommend starting with our Starter Blueprint plan if you're unsure.
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@await Html.PartialAsync("_Footer")
+

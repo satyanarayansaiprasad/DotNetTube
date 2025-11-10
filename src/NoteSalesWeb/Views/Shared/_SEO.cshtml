@@ -1,0 +1,161 @@
+@{
+    var currentUrl = Context.Request.Scheme + "://" + Context.Request.Host + Context.Request.Path;
+    var siteUrl = Context.Request.Scheme + "://" + Context.Request.Host;
+    var title = ViewData["Title"]?.ToString() ?? "DotNetTube - Master .NET Development from Basics to Advanced";
+    var description = ViewData["Description"]?.ToString() ?? "Comprehensive .NET learning course with 15 detailed modules covering C#, ASP.NET Core, Entity Framework, Microservices, Cloud, and more. Perfect for beginners to advanced developers. Get interview-ready with structured notes, practice questions, and Hindi video tutorials.";
+    var image = siteUrl + "/images/og-image.jpg";
+}
+
+<!-- Primary Meta Tags -->
+<meta name="title" content="@title">
+<meta name="description" content="@description">
+<meta name="keywords" content=".NET course, C# programming, ASP.NET Core, Entity Framework, .NET learning, .NET tutorial, .NET developer course, C# training, .NET interview preparation, .NET notes, .NET study material, .NET certification, microservices .NET, cloud .NET, .NET Hindi tutorial">
+<meta name="author" content="DotNetTube - Developed by Websy Online">
+<meta name="robots" content="index, follow">
+<meta name="language" content="English">
+<meta name="revisit-after" content="7 days">
+<meta name="theme-color" content="#0e1a2b">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="@currentUrl">
+<meta property="og:title" content="@title">
+<meta property="og:description" content="@description">
+<meta property="og:image" content="@image">
+<meta property="og:site_name" content="DotNetTube">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="@currentUrl">
+<meta property="twitter:title" content="@title">
+<meta property="twitter:description" content="@description">
+<meta property="twitter:image" content="@image">
+
+<!-- Canonical URL -->
+<link rel="canonical" href="@currentUrl">
+
+<!-- Structured Data - Course -->
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "Course",
+  "name": "Complete .NET Development Mastery Course",
+  "description": "Comprehensive 15-module .NET learning course covering everything from C# fundamentals to advanced topics like microservices, cloud deployment, and interview preparation.",
+  "provider": {
+    "@@type": "Organization",
+    "name": "DotNetTube",
+    "url": "@siteUrl"
+  },
+  "courseCode": "DNT-001",
+  "educationalLevel": "Intermediate to Advanced",
+  "teaches": [
+    "C# Programming",
+    "ASP.NET Core",
+    "Entity Framework Core",
+    "Microservices Architecture",
+    "Cloud Deployment",
+    ".NET Interview Preparation"
+  ],
+  "inLanguage": "en",
+  "offers": [
+    {
+      "@@type": "Offer",
+      "name": "Starter Blueprint",
+      "price": "299",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock"
+    },
+    {
+      "@@type": "Offer",
+      "name": "Career Accelerator",
+      "price": "599",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock"
+    },
+    {
+      "@@type": "Offer",
+      "name": "Elite Placement Suite",
+      "price": "999",
+      "priceCurrency": "INR",
+      "availability": "https://schema.org/InStock"
+    }
+  ]
+}
+</script>
+
+<!-- Structured Data - Organization -->
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "Organization",
+  "name": "DotNetTube",
+  "url": "@siteUrl",
+  "logo": "@siteUrl/images/logo.png",
+  "description": "Comprehensive .NET learning platform providing structured courses, notes, and resources for developers",
+  "sameAs": [],
+  "contactPoint": {
+    "@@type": "ContactPoint",
+    "contactType": "Customer Support",
+    "availableLanguage": ["English", "Hindi"]
+  }
+}
+</script>
+
+<!-- Structured Data - WebSite -->
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "WebSite",
+  "name": "DotNetTube",
+  "url": "@siteUrl",
+  "potentialAction": {
+    "@@type": "SearchAction",
+    "target": "@siteUrl/search?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+}
+</script>
+
+<!-- Structured Data - Product -->
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "Product",
+  "name": "DotNetTube .NET Learning Course",
+  "description": "@description",
+  "brand": {
+    "@@type": "Brand",
+    "name": "DotNetTube"
+  },
+  "offers": {
+    "@@type": "AggregateOffer",
+    "lowPrice": "299",
+    "highPrice": "999",
+    "priceCurrency": "INR",
+    "offerCount": "3",
+    "availability": "https://schema.org/InStock"
+  },
+  "aggregateRating": {
+    "@@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "150"
+  }
+}
+</script>
+
+<!-- Structured Data - BreadcrumbList -->
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "@siteUrl"
+    }
+  ]
+}
+</script>

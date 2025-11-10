@@ -78,10 +78,11 @@ public class PaymentController : ControllerBase
                     Amount = amount,
                     RazorpayPaymentId = paymentId ?? "",
                     RazorpayOrderId = orderId,
-                    IsVerified = true
+                    IsVerified = true,
+                    DownloadToken = Guid.NewGuid().ToString()
                 };
 
-                _purchaseService.SavePurchase(purchase);
+                _purchaseService.RecordPurchase(purchase);
 
                 _logger.LogInformation($"Payment verified: {paymentId} for plan {plan}");
 

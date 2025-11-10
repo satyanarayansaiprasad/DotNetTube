@@ -79,5 +79,41 @@ public class ThankYouController : Controller
 
         return View("Download", model);
     }
+
+    [HttpGet("access")]
+    public IActionResult Access()
+    {
+        ViewData["Title"] = "Access Your Purchase";
+        return View();
+    }
+
+    [HttpPost("access")]
+    public IActionResult Access(string? paymentId, string? email)
+    {
+        ViewData["Title"] = "Access Your Purchase";
+
+        Purchase? purchase = null;
+
+        // Try to find by payment ID first
+        if (!string.IsNullOrWhiteSpace(paymentId))
+        {
+            purchase = _purchaseService.GetPurchaseByPaymentId(paymentId);
+        }
+
+        // If not found, try by email
+        if (purchase == null && !string.IsNullOrWhiteSpace(email))
+        {
+            purchase = _purchaseService.GetPurchaseByEmail(email);
+        }
+
+        if (purchase == null || !purchase.IsVerified)
+        {
+            TempData["Error"] = "Purchase not found. Please check your payment ID or email. If you just made a payment, please wait a few moments for it to be processed.";
+            return View();
+        }
+
+        // Redirect to thank you page with payment ID
+        return RedirectToAction("Index", new { payment_id = purchase.RazorpayPaymentId });
+    }
 }
 

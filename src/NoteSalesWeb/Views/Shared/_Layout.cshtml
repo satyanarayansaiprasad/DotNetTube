@@ -3,18 +3,22 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - DotNet Mastery Notes</title>
+    <title>@ViewData["Title"] - DotNetTube | Master .NET Development</title>
     <script type="importmap"></script>
+    
+    @await Html.PartialAsync("_SEO")
+    
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/NoteSalesWeb.styles.css" asp-append-version="true" />
+    <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
 </head>
 <body>
     <header class="main-header">
         <nav class="navbar navbar-expand-lg navbar-dark nav-glass">
             <div class="container-xl">
                 <a class="navbar-brand fw-bold" asp-area="" asp-controller="Home" asp-action="Index">
-                    <span class="brand-accent">DotNet</span> Mastery Notes
+                    <span class="brand-accent">DotNet</span>Tube
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -45,12 +49,6 @@
     <main role="main" class="main-content">
         @RenderBody()
     </main>
-
-    <footer class="footer border-0">
-        <div class="container-xl text-center small text-muted">
-            &copy; @DateTime.UtcNow.Year DotNet Mastery Notes &middot; 100% digital delivery &middot; Crafted for serious .NET learners
-        </div>
-    </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
