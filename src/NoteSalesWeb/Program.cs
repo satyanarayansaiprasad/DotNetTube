@@ -27,5 +27,8 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
 
+// Configure port for Render (uses PORT environment variable)
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+app.Urls.Add($"http://+:{port}");
 
 app.Run();
