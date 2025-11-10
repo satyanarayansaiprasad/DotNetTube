@@ -1,0 +1,64 @@
+@model NoteSalesWeb.Models.ThankYouViewModel
+@{
+    ViewData["Title"] = "Thank You for Your Purchase";
+}
+
+<section class="hero section" style="min-height: 60vh; padding-top: 4rem;">
+    <div class="container-xl text-center">
+        <div class="mb-4">
+            <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#0fbf9f" stroke-width="2" class="mb-3">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+        </div>
+        <h1 class="display-4 mb-3">Payment Successful!</h1>
+        <p class="hero-lead mb-4">
+            Thank you for purchasing the <strong>@Model.PlanDetails?.Name</strong> plan. 
+            Your notes are ready for download.
+        </p>
+
+        @if (Model.Purchase != null && Model.Purchase.IsVerified)
+        {
+            <div class="alert alert-success mx-auto" style="max-width: 600px;">
+                <h5 class="mb-2">Purchase Verified</h5>
+                <p class="mb-1"><strong>Email:</strong> @Model.Purchase.Email</p>
+                <p class="mb-1"><strong>Amount:</strong> ₹@Model.Purchase.Amount</p>
+                <p class="mb-0"><strong>Date:</strong> @Model.Purchase.PurchaseDate.ToString("dd MMM yyyy, hh:mm tt")</p>
+            </div>
+
+            <div class="mt-4">
+                <a href="@Url.Action("Download", "ThankYou", new { token = Model.DownloadToken })" 
+                   class="btn btn-primary btn-lg rounded-pill px-5">
+                    Download Your Notes Now
+                </a>
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-warning mx-auto" style="max-width: 600px;">
+                <h5 class="mb-2">Payment Processing</h5>
+                <p class="mb-0">
+                    Your payment is being verified. You will receive an email with download instructions shortly.
+                    If you have a payment ID, you can check your purchase status.
+                </p>
+            </div>
+
+            @if (Model.PlanDetails != null)
+            {
+                <div class="mt-4">
+                    <a href="@Url.Action("Download", "ThankYou", new { plan = Model.PlanDetails.Plan.ToString().ToLower() })" 
+                       class="btn btn-outline-primary btn-lg rounded-pill px-5">
+                        Access @Model.PlanDetails.Name
+                    </a>
+                </div>
+            }
+        }
+
+        <div class="mt-5">
+            <p class="text-muted">
+                Need help? Check your email for download instructions or contact support.
+            </p>
+        </div>
+    </div>
+</section>
+

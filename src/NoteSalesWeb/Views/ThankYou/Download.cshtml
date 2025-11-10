@@ -1,0 +1,78 @@
+@model NoteSalesWeb.Models.ThankYouViewModel
+@{
+    ViewData["Title"] = "Download Your Notes";
+}
+
+<section class="section" style="padding-top: 4rem;">
+    <div class="container-xl">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="section-card">
+                    <h2 class="section-title mb-4">Your @Model.PlanDetails?.Name Package</h2>
+                    
+                    @if (Model.PlanDetails != null)
+                    {
+                        <div class="mb-4">
+                            <h4 class="mb-3">What's Included:</h4>
+                            <ul class="value-list">
+                                @foreach (var feature in Model.PlanDetails.Features)
+                                {
+                                    <li>
+                                        <span class="value-icon">✓</span>
+                                        <span>@feature</span>
+                                    </li>
+                                }
+                            </ul>
+                        </div>
+
+                        <div class="mb-4">
+                            <h4 class="mb-3">Modules Included:</h4>
+                            <div class="row g-2">
+                                @foreach (var module in Model.PlanDetails.Modules)
+                                {
+                                    <div class="col-md-6">
+                                        <div class="p-3 border rounded">
+                                            <strong>@module</strong>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="text-center mt-5">
+                            <a href="/it notes" class="btn btn-primary btn-lg rounded-pill px-5" download>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: inline-block; vertical-align: middle; margin-right: 8px;">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                    <polyline points="7 10 12 15 17 10"></polyline>
+                                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                                </svg>
+                                Download All Notes (ZIP)
+                            </a>
+                            <p class="text-muted mt-3 small">
+                                Your download link is valid. Save this page or bookmark it for future access.
+                            </p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-danger">
+                            <h5>Access Denied</h5>
+                            <p>Invalid download token or purchase not verified. Please contact support with your payment ID.</p>
+                        </div>
+                    }
+
+                    <div class="mt-5 pt-4 border-top">
+                        <h5 class="mb-3">Next Steps:</h5>
+                        <ol>
+                            <li>Download and extract the notes package</li>
+                            <li>Start with Module 01: Orientation & Setup</li>
+                            <li>Follow the 15-day learning path</li>
+                            <li>Use the practice questions and Hindi video links included</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
